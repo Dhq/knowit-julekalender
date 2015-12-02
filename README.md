@@ -1,4 +1,4 @@
-# Knowit julekalender 2015
+# Knowit x-mas calendar 2015
 
 Solutions in javascript
 
