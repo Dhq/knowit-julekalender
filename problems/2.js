@@ -4,17 +4,19 @@ console.time('1');
 let fileName = './inputs/2.txt';
 let file = fs.readFile(fileName, 'utf-8', (err, content) => {
   let lines = content.split(/\n/);
+  //Lowest number so far in the iteration
+  let minSoFar = Number.MAX_VALUE;
 
-  let result = lines.reduce((prev, curr, i) => {
-    let currFloat = parseFloat(curr);
-    let maxWinOnCurrent = lines.slice(0, i-1).reduce((prev1, curr1, i) => {
-      let diff = currFloat - parseFloat(curr1);
-      return diff > prev1 ? diff : prev1;
-    }, 0);
+  let maxProfit = lines.reduce((highestProfit, currentLine) => {
+    let currentLineFloat = parseFloat(currentLine);
+    minSoFar = currentLineFloat < minSoFar ? currentLineFloat : minSoFar;
+    let profitForCurrentDay = currentLineFloat - minSoFar;
 
-    return maxWinOnCurrent > prev ? maxWinOnCurrent : prev;
+    return profitForCurrentDay > highestProfit
+            ? profitForCurrentDay
+            : highestProfit;
   }, 0);
 
-  console.log(result);
+  console.log(maxProfit);
   console.timeEnd('1');
 })

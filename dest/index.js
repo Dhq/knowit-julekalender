@@ -10,17 +10,17 @@ console.time('1');
 var fileName = './inputs/2.txt';
 var file = _fs2.default.readFile(fileName, 'utf-8', function (err, content) {
   var lines = content.split(/\n/);
+  //Lowest number so far in the iteration
+  var minSoFar = Number.MAX_VALUE;
 
-  var result = lines.reduce(function (prev, curr, i) {
-    var currFloat = parseFloat(curr);
-    var maxWinOnCurrent = lines.slice(0, i - 1).reduce(function (prev1, curr1, i) {
-      var diff = currFloat - parseFloat(curr1);
-      return diff > prev1 ? diff : prev1;
-    }, 0);
+  var maxProfit = lines.reduce(function (highestProfit, currentLine) {
+    var currentLineFloat = parseFloat(currentLine);
+    minSoFar = currentLineFloat < minSoFar ? currentLineFloat : minSoFar;
+    var profitForCurrentDay = currentLineFloat - minSoFar;
 
-    return maxWinOnCurrent > prev ? maxWinOnCurrent : prev;
+    return profitForCurrentDay > highestProfit ? profitForCurrentDay : highestProfit;
   }, 0);
 
-  console.log(result);
+  console.log(maxProfit);
   console.timeEnd('1');
 });
