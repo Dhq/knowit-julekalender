@@ -3,4 +3,4 @@
 Solutions in javascript
 
 
-...don't worry, wont post solutions until the next day :)
+...don't worry, wont push solutions until the next day :)
