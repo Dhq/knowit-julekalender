@@ -2,7 +2,6 @@ console.time('time');
 
 let totalFridays = 0;
 let currentDayIndex = 4;
-let currentYear = 1;
 let programmerDayIndex = 256;
 
 for (var year = 1; year < 2016; year++) {
