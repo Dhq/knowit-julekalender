@@ -6,10 +6,10 @@ var gutil = require('gulp-util');
 var rename = require('gulp-rename');
 
 var currentDay = gutil.env.day;
-console.log(currentDay);
+console.log('Current day: ' + currentDay);
 
 gulp.task('js', function() {
-  gulp.src('problems/'+ currentDay +'.js')
+  gulp.src('solutions/'+ currentDay +'.js')
     .pipe(plumber())
     .pipe(babel())
     .pipe(rename('index.js'))
@@ -17,7 +17,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('problems/**/*.js', ['js']);
+    gulp.watch('solutions/**/*.js', ['js']);
 });
 
 gulp.task('default', ['watch']);
