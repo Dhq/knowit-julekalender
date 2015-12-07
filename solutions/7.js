@@ -18,5 +18,3 @@ for (var i = 0; i <= 1000; i++) {
 
 console.log(`Answer: ${result}`);
 console.timeEnd('Ran for');
-
-String.prototype.reverse=function(){return this.split("").reverse().join("");}
