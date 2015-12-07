@@ -6,14 +6,11 @@
 console.time('Ran for');
 
 let result = 0;
-let found = [];
 
 for (var i = 0; i <= 1000; i++) {
-  let has7 = primeFactorization(i).find((x) => { return x === 7 });
-  if(has7) {
+  if(i % 7 == 0) {
     let reversed = parseInt(i.toString().split('').reverse().join().replace(/,/g, ''));
-    let reversedHas7 = primeFactorization(reversed).find((x) => { return x === 7 });
-    if(reversed > 0 && 0 <= 1000 && reversedHas7) {
+    if(reversed > 0 && 0 <= 1000 && reversed % 7 == 0) {
         result += i;
     }
   }
@@ -22,20 +19,4 @@ for (var i = 0; i <= 1000; i++) {
 console.log(`Answer: ${result}`);
 console.timeEnd('Ran for');
 
-//Stolen from SA answer!
-function primeFactorization(num){
-  var root = Math.sqrt(num),
-  result = arguments[1] || [],  //get unnamed paremeter from recursive calls
-  x = 2;
-
-  if(num % x){//if not divisible by 2
-   x = 3;//assign first odd
-   while((num % x) && ((x = x + 2) < root)){}//iterate odds
-  }
-  //if no factor found then num is prime
-  x = (x <= root) ? x : num;
-  result.push(x);//push latest prime factor
-
-  //if num isn't prime factor make recursive call
-  return (x === num) ? result : primeFactorization(num/x, result) ;
-}
+String.prototype.reverse=function(){return this.split("").reverse().join("");}
