@@ -3,6 +3,8 @@
 //For eksempel teller 259 da en får 952 om en reverserer sifrene og begge disse
 //tallene har 7 som en primtallsfaktor.
 
+console.time('Ran for');
+
 let result = 0;
 let found = [];
 
@@ -17,8 +19,10 @@ for (var i = 0; i <= 1000; i++) {
   }
 }
 
-console.log(`Resultat: ${result}`);
+console.log(`Answer: ${result}`);
+console.timeEnd('Ran for');
 
+//Stolen from SA answer!
 function primeFactorization(num){
   var root = Math.sqrt(num),
   result = arguments[1] || [],  //get unnamed paremeter from recursive calls
