@@ -12,7 +12,6 @@ for (var i = 0; i <= 1000; i++) {
     let reversed = parseInt(i.toString().split('').reverse().join().replace(/,/g, ''));
     let reversedHas7 = primeFactorization(reversed).find((x) => { return x === 7 });
     if(reversed > 0 && 0 <= 1000 && reversedHas7) {
-      console.log(i);
         result += i;
     }
   }
