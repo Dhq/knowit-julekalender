@@ -1,28 +1,27 @@
 import fs from 'fs';
 
 console.time('1');
-let fileName = './inputs/2016-9.txt';
-let file = fs.readFile(fileName, 'utf-8', (err, content) => {
-    const transactions = content.split(/\n/);
+const fileName = './inputs/2016-9.txt';
+fs.readFile(fileName, 'utf-8', (err, content) => {
+  const transactions = content.split(/\n/);
 
-    let data = transactions.reduce((accounts, current) => {
-        let transaction = current.split(',');
-        let amount = parseInt(transaction[2]);
+  const data = transactions.reduce((accounts, current) => {
+    const transaction = current.split(',');
+    const amount = parseInt(transaction[2], 0);
+    const newAccounts = Object.assign(accounts);
 
-        if(accounts[transaction[0]] !== "None") {
-            accounts[transaction[0]] = !accounts[transaction[0]] ? 0 : accounts[transaction[0]];
-            accounts[transaction[0]] -= amount;
-        }
+    newAccounts[transaction[0]] = !newAccounts[transaction[0]] ? 0 : newAccounts[transaction[0]];
+    newAccounts[transaction[0]] -= amount;
 
-        accounts[transaction[1]] = !accounts[transaction[1]] ? 0 : accounts[transaction[1]];
-        accounts[transaction[1]] += amount;
- 
-        return accounts;
-    }, []);
+    newAccounts[transaction[1]] = !newAccounts[transaction[1]] ? 0 : newAccounts[transaction[1]];
+    newAccounts[transaction[1]] += amount;
 
-    let res = Object.keys(data).filter((id) => data[id] > 10).length;
-    console.log(res);
+    return accounts;
+  }, []);
 
-    console.timeEnd('1');
-})
+  const res = Object.keys(data).filter(id => data[id] > 10).length;
+  console.log(res);
+
+  console.timeEnd('1');
+});
 
