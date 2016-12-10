@@ -5,7 +5,7 @@ let fileName = './inputs/2016-7.txt';
 let file = fs.readFile(fileName, 'utf-8', (err, content) => {
     let lines = content.split(/\n/);
 
-    let res = lines.reduce((currentLocations, line) => { 
+    let res = lines.reduce((currentLocations, line) => {
         let meters = parseInt(line.match(/[0-9]+/g));
         let direction =  line.match(/\b(\w+)\W$/g);
 
