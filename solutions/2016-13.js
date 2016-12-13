@@ -1,14 +1,13 @@
 import fs from 'fs';
 
 const fileName = './inputs/2016-13.txt';
-console.log("befoire net");
 const size = 9999;
 var net = new Array(size);
 for (var i = 0; i < net.length; i++) {
-  net[i] = new Array(size).map(x => 1);
+  net[i] = Array.apply(null, Array(size)).map(x => 0);
 }
 
-console.log("after net",net);
+console.log("done init");
 fs.readFile(fileName, 'utf-8', (err, content) => {
   const res = content
     .split(/\n/)
